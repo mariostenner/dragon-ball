@@ -1,14 +1,13 @@
 package com.mariods.practiceall1.data.model
 
 import com.google.gson.annotations.SerializedName
-import com.mariods.practiceall1.domain.model.DragonModel
 
 
-data class DragonNetworkItems(
-        @SerializedName("items") val items: List<DragonNetworkModel>
+data class CharacterNetworkItems(
+    @SerializedName("items") val items: List<CharacterNetworkModel>
 )
 
-data class DragonNetworkModel(
+data class CharacterNetworkModel(
     @SerializedName("id") val id: Int,
     @SerializedName("name") val name: String,
     @SerializedName("ki") val ki: String,
@@ -17,6 +16,5 @@ data class DragonNetworkModel(
     @SerializedName("gender") val gender: String,
     @SerializedName("description") val description: String,
     @SerializedName("image") val image: String,
-    @SerializedName("affiliation") val affiliation: String,
-
+    @SerializedName("affiliation") val affiliation: String
 )

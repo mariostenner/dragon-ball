@@ -1,8 +1,18 @@
 package com.mariods.practiceall1.data.model
 
-import com.mariods.practiceall1.domain.model.DragonModel
+class DragonProvider {
 
-//class DragonProvider {
+    companion object {
+        var dummyList: List<TransformationsListNetworkModel> = listOf(
+            TransformationsListNetworkModel(
+                0,
+                "Sin transformaciones",
+                "https://i.pinimg.com/736x/a5/f9/a2/a5f9a2eb5c0bfb1f66988696e1f31334.jpg",
+                "0"
+            )
+        )
+    }
+}
 //
 //    companion object {
 //        val DragonDummyList: List<DragonModel> = listOf(

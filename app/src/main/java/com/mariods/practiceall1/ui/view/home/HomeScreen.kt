@@ -1,6 +1,5 @@
 package com.mariods.practiceall1.ui.view.home
 
-import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -31,7 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
-import com.mariods.practiceall1.domain.model.DragonModel
+import com.mariods.practiceall1.domain.model.CharacterModel
 
 
 @Composable
@@ -46,7 +45,7 @@ fun HomeScreen(homeViewModel: HomeViewModel) {
             .padding(vertical = 40.dp, horizontal = 10.dp),
     ) {
         items(list) { item ->
-            ListItem(item, Modifier)
+            ListItem(item, Modifier, homeViewModel)
             Spacer(modifier = Modifier.size(10.dp))
         }
     }
@@ -54,7 +53,7 @@ fun HomeScreen(homeViewModel: HomeViewModel) {
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
-fun ListItem(data: DragonModel, modifier: Modifier = Modifier) {
+fun ListItem(data: CharacterModel, modifier: Modifier = Modifier, homeViewModel: HomeViewModel) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier
@@ -69,7 +68,7 @@ fun ListItem(data: DragonModel, modifier: Modifier = Modifier) {
             .background(color = Color(0xFF1c4595))
             .padding(10.dp)
             .clickable {
-                intentDetail(data.id)
+                intentDetail(data.id, homeViewModel)
             },
     ) {
         GlideImage(
@@ -128,7 +127,9 @@ fun ListItem(data: DragonModel, modifier: Modifier = Modifier) {
     }
 }
 
-fun intentDetail(idItem: Int) {
-    Log.i("IR A DETALLES", "Intent de item $idItem para ver detalles")
+fun intentDetail(idItem: Int, homeViewModel: HomeViewModel) {
+
+
+    homeViewModel.getDetail(idItem)
 
 }
