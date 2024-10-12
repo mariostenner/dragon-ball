@@ -1,4 +1,4 @@
-package com.mariods.practiceall1.ui.view
+package com.mariods.practiceall1.ui.view.home
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -17,8 +17,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -26,18 +24,16 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewModelScope
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
-import com.mariods.practiceall1.data.model.DragonModel
-import com.mariods.practiceall1.ui.viewmodel.DragonViewModel
+import com.mariods.practiceall1.domain.model.DragonModel
 
 //@Preview
 @Composable
-fun PrincipalList(dragonViewModel: DragonViewModel = DragonViewModel()) {
-    var value: String = ""
+fun HomeScreen(homeViewModel: HomeViewModel) {
 
-    val list by dragonViewModel.dragonList.observeAsState(emptyList())
+    val list by homeViewModel.dragonList.observeAsState(emptyList())
+    homeViewModel.onCreate()
 
     LazyColumn(
         modifier = Modifier
