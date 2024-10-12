@@ -1,8 +1,11 @@
 package com.mariods.practiceall1.ui.view.home
 
+import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -54,7 +57,6 @@ fun HomeScreen(homeViewModel: HomeViewModel) {
 fun ListItem(data: DragonModel, modifier: Modifier = Modifier) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
-
         modifier = modifier
             .fillMaxSize()
             .clip(
@@ -65,8 +67,10 @@ fun ListItem(data: DragonModel, modifier: Modifier = Modifier) {
                 RoundedCornerShape(16.dp)
             )
             .background(color = Color(0xFF1c4595))
-
             .padding(10.dp)
+            .clickable {
+                intentDetail(data.id)
+            },
     ) {
         GlideImage(
             model = data.image,
@@ -80,12 +84,12 @@ fun ListItem(data: DragonModel, modifier: Modifier = Modifier) {
         Column(
             modifier = modifier
                 .padding(start = 20.dp)
-                .fillMaxWidth()
+                .fillMaxWidth(),
+            verticalArrangement = Arrangement.spacedBy(2.dp)
         ) {
             Text(
                 modifier = modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 4.dp),
+                    .fillMaxWidth(),
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.White,
@@ -93,8 +97,7 @@ fun ListItem(data: DragonModel, modifier: Modifier = Modifier) {
             )
             Text(
                 modifier = modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 2.dp),
+                    .fillMaxWidth(),
                 fontSize = 18.sp,
                 fontStyle = FontStyle.Italic,
                 color = Color(0xFFfbbc42), text = data.ki
@@ -123,4 +126,9 @@ fun ListItem(data: DragonModel, modifier: Modifier = Modifier) {
         }
 
     }
+}
+
+fun intentDetail(idItem: Int) {
+    Log.i("IR A DETALLES", "Intent de item $idItem para ver detalles")
+
 }
