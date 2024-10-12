@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,6 +20,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -28,7 +30,7 @@ import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.mariods.practiceall1.domain.model.DragonModel
 
-//@Preview
+
 @Composable
 fun HomeScreen(homeViewModel: HomeViewModel) {
 
@@ -42,6 +44,7 @@ fun HomeScreen(homeViewModel: HomeViewModel) {
     ) {
         items(list) { item ->
             ListItem(item, Modifier)
+            Spacer(modifier = Modifier.size(10.dp))
         }
     }
 }
@@ -51,13 +54,18 @@ fun HomeScreen(homeViewModel: HomeViewModel) {
 fun ListItem(data: DragonModel, modifier: Modifier = Modifier) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
+
         modifier = modifier
             .fillMaxSize()
-            .background(Color.White)
-            .border(
-                BorderStroke(2.dp, Color.Black),
+            .clip(
                 RoundedCornerShape(16.dp)
             )
+            .border(
+                BorderStroke(3.dp, Color.White),
+                RoundedCornerShape(16.dp)
+            )
+            .background(color = Color(0xFF1c4595))
+
             .padding(10.dp)
     ) {
         GlideImage(
@@ -80,7 +88,7 @@ fun ListItem(data: DragonModel, modifier: Modifier = Modifier) {
                     .padding(vertical = 4.dp),
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color.Blue,
+                color = Color.White,
                 text = data.name
             )
             Text(
@@ -89,28 +97,28 @@ fun ListItem(data: DragonModel, modifier: Modifier = Modifier) {
                     .padding(vertical = 2.dp),
                 fontSize = 18.sp,
                 fontStyle = FontStyle.Italic,
-                color = Color.Red, text = data.ki
+                color = Color(0xFFfbbc42), text = data.ki
             )
             Text(
                 modifier = modifier
                     .fillMaxWidth(),
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color.Black, text = data.race
+                color = Color(0xFFe76a24), text = data.race
             )
             Text(
                 modifier = modifier
                     .fillMaxWidth(),
                 fontSize = 14.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color.Black, text = data.gender
+                color = Color.White, text = data.gender
             )
             Text(
                 modifier = modifier
                     .fillMaxWidth(),
                 fontSize = 12.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color.Black, text = data.affiliation
+                color = Color.White, text = data.affiliation
             )
         }
 
